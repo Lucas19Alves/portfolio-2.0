@@ -1,5 +1,18 @@
-# Vue 3 + TypeScript + Vite
+# Portfólio - Lucas Alves
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Este é o repositório do meu portfólio pessoal, desenvolvido com [Vue 3](https://vuejs.org/), [TypeScript](https://www.typescriptlang.org/), [Vite](https://vitejs.dev/) e [Tailwind CSS](https://tailwindcss.com/). Aqui você encontra informações sobre mim, minhas habilidades, projetos e formas de contato.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## 🚀 Tecnologias Utilizadas
+
+- [Vue 3](https://vuejs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [AOS (Animate On Scroll)](https://michalsnik.github.io/aos/)
+- [EmailJS](https://www.emailjs.com/)
+
+##📬 Contato
+[LinkedIn](https://www.linkedin.com/in/lucaas19alves/)
+[GitHub](https://github.com/Lucas19Alves)
+WhatsApp: +55 (11) 98192-7567
+Email: lucaas19alves@gmail.com
