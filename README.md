@@ -11,7 +11,8 @@ Este é o repositório do meu portfólio pessoal, desenvolvido com [Vue 3](https
 - [AOS (Animate On Scroll)](https://michalsnik.github.io/aos/)
 - [EmailJS](https://www.emailjs.com/)
 
-##📬 Contato
+## 📬 Contato
+
 [LinkedIn](https://www.linkedin.com/in/lucaas19alves/)
 [GitHub](https://github.com/Lucas19Alves)
 WhatsApp: +55 (11) 98192-7567
