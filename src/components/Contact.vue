@@ -1,28 +1,34 @@
 <script setup lang="ts">
 import emailjs from '@emailjs/browser';
-import { onMounted } from 'vue';
+import { ref } from 'vue';
 
-onMounted(() => {
-  emailjs.init('cu17r5y9QKLHIvYoR');
-});
+const isSending = ref(false);
 
 const sendEmail = (event: Event) => {
   event.preventDefault();
-
+  
   const form = event.target as HTMLFormElement;
+  isSending.value = true;
 
-  emailjs.sendForm('service_3g23jfi', 'template_y7ontwx', form)
+  // Usando IDs fornecidos pelo usuário no código original
+  const serviceId = 'service_3g23jfi';
+  const templateId = 'template_y7ontwx';
+  const publicKey = 'cu17r5y9QKLHIvYoR';
+
+  emailjs.sendForm(serviceId, templateId, form, publicKey)
     .then(() => {
-      alert('Mensagem enviada com sucesso!');
+      alert('Mensagem enviada com sucesso! Entrarei em contato em breve.');
       form.reset();
     })
     .catch((error) => {
-      console.error('Erro ao enviar mensagem:', error);
-      alert('Erro ao enviar a mensagem.');
+      console.error('Erro detalhado do EmailJS:', error);
+      alert('Houve um erro ao enviar sua mensagem. Por favor, tente novamente ou me envie um e-mail direto.');
+    })
+    .finally(() => {
+      isSending.value = false;
     });
 };
 </script>
-
 
 <template>
   <section id="contato" class="section-padding bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
@@ -45,7 +51,7 @@ const sendEmail = (event: Event) => {
             <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Informações</h3>
             <div class="space-y-4">
               <div class="flex items-center gap-4 text-gray-600 dark:text-gray-400">
-                <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 text-primary rounded-xl flex items-center justify-center">
+                <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 text-primary rounded-xl flex items-center justify-center shrink-0">
                   <i class="fas fa-envelope text-xl"></i>
                 </div>
                 <div>
@@ -54,7 +60,7 @@ const sendEmail = (event: Event) => {
                 </div>
               </div>
               <div class="flex items-center gap-4 text-gray-600 dark:text-gray-400">
-                <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 text-green-600 rounded-xl flex items-center justify-center">
+                <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 text-green-600 rounded-xl flex items-center justify-center shrink-0">
                   <i class="fab fa-whatsapp text-xl"></i>
                 </div>
                 <div>
@@ -63,7 +69,7 @@ const sendEmail = (event: Event) => {
                 </div>
               </div>
               <div class="flex items-center gap-4 text-gray-600 dark:text-gray-400">
-                <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 text-purple-600 rounded-xl flex items-center justify-center">
+                <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 text-purple-600 rounded-xl flex items-center justify-center shrink-0">
                   <i class="fas fa-location-dot text-xl"></i>
                 </div>
                 <div>
@@ -106,6 +112,13 @@ const sendEmail = (event: Event) => {
             </div>
 
             <div>
+              <label for="phone" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Seu Telefone</label>
+              <input type="tel" id="phone" name="phone" placeholder="(11) 99999-9999"
+                class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
+                required autocomplete="tel">
+            </div>
+
+            <div>
               <label for="message" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Sua Mensagem</label>
               <textarea id="message" name="message" rows="4" placeholder="Em que posso te ajudar?"
                 class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none resize-none"
@@ -113,8 +126,12 @@ const sendEmail = (event: Event) => {
             </div>
 
             <button type="submit"
-              class="w-full bg-primary hover:bg-secondary text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1">
-              Enviar Mensagem
+              :disabled="isSending"
+              class="w-full bg-primary hover:bg-secondary disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center">
+              <span v-if="isSending" class="mr-2">
+                <i class="fas fa-circle-notch animate-spin"></i>
+              </span>
+              {{ isSending ? 'Enviando...' : 'Enviar Mensagem' }}
             </button>
           </form>
         </div>
@@ -122,17 +139,3 @@ const sendEmail = (event: Event) => {
     </div>
   </section>
 </template>
-
-
-
-<style>
-input,
-textarea {
-  transition: box-shadow 0.3s ease-in-out;
-}
-
-input:focus,
-textarea:focus {
-  box-shadow: 0 0 0 2px #3b82f6;
-}
-</style>
