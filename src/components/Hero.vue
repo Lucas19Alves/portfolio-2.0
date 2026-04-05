@@ -86,7 +86,7 @@ onMounted(() => {
             <div class="absolute -inset-4 border-2 border-primary/30 rounded-full border-dashed animate-[spin_10s_linear_infinite]"></div>
             
             <img 
-              src="../assets/perfil.jpeg" 
+              src="../assets/perfil.jpg" 
               alt="Lucas" 
               class="relative z-10 w-full h-full object-cover rounded-full border-4 border-white dark:border-gray-800 shadow-2xl shadow-primary/20"
             >
