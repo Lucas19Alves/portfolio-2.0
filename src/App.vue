@@ -9,6 +9,7 @@ import Skills from './components/Skills.vue';
 import Projects from './components/Projects.vue';
 import Contact from './components/Contact.vue';
 import Footer from './components/Footer.vue';
+import BackToTop from './components/BackToTop.vue';
 
 onMounted(() => {
   AOS.init({
@@ -30,5 +31,6 @@ onMounted(() => {
       <Contact />
     </main>
     <Footer />
+    <BackToTop />
   </div>
 </template>
