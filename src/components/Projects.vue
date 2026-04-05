@@ -20,10 +20,10 @@ const projetos = [
   {
     titulo: 'Gerador de Currículo',
     descricao: 'Ferramenta prática para criação de currículos profissionais com exportação direta para PDF.',
-    tecnologias: ['JavaScript', 'HTML/CSS'],
+    tecnologias: ['VueJS', 'TailwindCSS'],
     imagem: new URL('../assets/curriculo.png', import.meta.url).href,
     github: 'https://github.com/Lucas19Alves/gerador-curriculo',
-    demo: 'https://gerador-curriculo-bice.vercel.app/'
+    demo: 'https://gerador-curriculo-rho.vercel.app/'
   },
   {
     titulo: 'Gerador de QRCode',
