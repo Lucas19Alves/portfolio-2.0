@@ -1,119 +1,69 @@
 <script setup lang="ts">
-const skills = {
-  frontend: [
-    { name: 'Vue.js', level: 95 },
-    { name: 'React', level: 85 },
-    { name: 'Angular', level: 85 },
-    { name: 'JavaScript', level: 90 },
-    { name: 'TypeScript', level: 80 },
-    { name: 'Tailwind CSS', level: 100 },
-  ],
-  backend: [
-    { name: 'Node.js', level: 90 },
-    { name: 'Python', level: 80 },
-    { name: 'MySQL', level: 85 },
-    { name: 'PostgreSQL', level: 80 },
-    { name: 'PHP', level: 85 },
-  ],
-  tools: [
-    { name: 'Git', level: 95 },
-    { name: 'Docker', level: 85 },
-    { name: 'AWS', level: 80 },
-    { name: 'CI/CD', level: 80 },
-  ],
-};
+const skillCategories = [
+  {
+    title: 'Frontend',
+    icon: 'fa-solid fa-code',
+    color: 'text-blue-600',
+    bgColor: 'bg-blue-50 dark:bg-blue-900/20',
+    skills: ['Vue.js / Nuxt.js', 'React / Next.js', 'TypeScript', 'Tailwind CSS', 'Gerenciamento de Estado', 'Testes (Vitest/Jest)', 'Otimização de Performance']
+  },
+  {
+    title: 'Backend',
+    icon: 'fa-solid fa-server',
+    color: 'text-green-600',
+    bgColor: 'bg-green-50 dark:bg-green-900/20',
+    skills: ['Node.js / NestJS', 'Python (FastAPI)', 'PostgreSQL / MySQL', 'MongoDB / Redis', 'Microserviços', 'APIs RESTful & GraphQL', 'Arquitetura Serverless']
+  },
+  {
+    title: 'Análise de Dados',
+    icon: 'fa-solid fa-chart-line',
+    color: 'text-orange-600',
+    bgColor: 'bg-orange-50 dark:bg-orange-900/20',
+    skills: ['Python (Pandas/NumPy)', 'SQL Avançado', 'Power BI / Tableau', 'Visualização de Dados', 'Processos ETL', 'Conceitos de Big Data', 'Google Analytics']
+  },
+  {
+    title: 'DevOps & Design',
+    icon: 'fa-solid fa-screwdriver-wrench',
+    color: 'text-purple-600',
+    bgColor: 'bg-purple-50 dark:bg-purple-900/20',
+    skills: ['Git & GitHub', 'Docker / Kubernetes', 'AWS / Azure', 'Pipelines CI/CD', 'Linux (Bash)', 'Figma (Design Systems)', 'Metodologias Ágeis']
+  }
+];
 </script>
 
 <template>
-  <section id="skills" class="section-padding bg-gray-50">
+  <section id="skills" class="section-padding bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
     <div class="container mx-auto">
-      <!-- Título -->
-      <h2 
-        class="text-4xl font-bold text-center mb-12 text-gray-800 hover:text-blue-500 transition-colors"
-        data-aos="fade-up"
-      >
-        Habilidades
-      </h2>
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-4xl font-bold text-gray-800 dark:text-white mb-4">Habilidades Técnicas</h2>
+        <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          Conjunto de tecnologias e ferramentas que utilizo para construir soluções digitais de alto impacto e performance, sempre alinhado com as demandas do mercado.
+        </p>
+      </div>
       
-      <!-- Grid -->
-      <div class="grid md:grid-cols-3 gap-8">
-        <!-- Desenvolvimento Frontend -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div 
-          class="bg-white p-6 rounded-lg shadow-md" 
+          v-for="(category, index) in skillCategories" 
+          :key="category.title"
+          class="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-xl border border-transparent dark:border-gray-700 hover:border-primary/30 transition-all duration-300"
           data-aos="fade-up"
+          :data-aos-delay="index * 150"
         >
-          <h3 
-            class="text-xl font-semibold mb-6 text-blue-600"
-          >
-            Desenvolvimento Frontend
-          </h3>
-          <div class="space-y-4">
-            <div v-for="skill in skills.frontend" :key="skill.name">
-              <div class="flex justify-between mb-1">
-                <span class="text-gray-700">{{ skill.name }}</span>
-                <span class="text-gray-500">{{ skill.level }}%</span>
-              </div>
-              <div class="w-full bg-gray-200 rounded-full h-2">
-                <div 
-                  class="bg-primary rounded-full h-2" 
-                  :style="{ width: `${skill.level}%` }"
-                ></div>
-              </div>
+          <div class="flex items-center mb-8">
+            <div :class="['w-10 h-10 rounded-xl flex items-center justify-center mr-3 shrink-0', category.bgColor]">
+              <i :class="[category.icon, category.color, 'text-lg']"></i>
             </div>
+            <h3 class="text-xl font-bold text-gray-800 dark:text-white leading-tight">{{ category.title }}</h3>
           </div>
-        </div>
-
-        <!-- Desenvolvimento backend -->
-        <div 
-          class="bg-white p-6 rounded-lg shadow-md" 
-          data-aos="fade-up" 
-          data-aos-delay="200"
-        >
-          <h3 
-            class="text-xl font-semibold mb-6 text-green-600"
-          >
-          Desenvolvimento Backend
-          </h3>
-          <div class="space-y-4">
-            <div v-for="skill in skills.backend" :key="skill.name">
-              <div class="flex justify-between mb-1">
-                <span class="text-gray-700">{{ skill.name }}</span>
-                <span class="text-gray-500">{{ skill.level }}%</span>
-              </div>
-              <div class="w-full bg-gray-200 rounded-full h-2">
-                <div 
-                  class="bg-green-600 rounded-full h-2" 
-                  :style="{ width: `${skill.level}%` }"
-                ></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Ferramentas e Tecnologias -->
-        <div 
-          class="bg-white p-6 rounded-lg shadow-md" 
-          data-aos="fade-up" 
-          data-aos-delay="400"
-        >
-          <h3 
-            class="text-xl font-semibold mb-6 text-purple-600"
-          >
-            Ferramentas e Tecnologias
-          </h3>
-          <div class="space-y-4">
-            <div v-for="skill in skills.tools" :key="skill.name">
-              <div class="flex justify-between mb-1">
-                <span class="text-gray-700">{{ skill.name }}</span>
-                <span class="text-gray-500">{{ skill.level }}%</span>
-              </div>
-              <div class="w-full bg-gray-200 rounded-full h-2">
-                <div 
-                  class="bg-purple-600 rounded-full h-2" 
-                  :style="{ width: `${skill.level}%` }"
-                ></div>
-              </div>
-            </div>
+          
+          <div class="flex flex-wrap gap-2">
+            <span 
+              v-for="skill in category.skills" 
+              :key="skill"
+              class="px-3 py-1.5 bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg text-xs font-medium border border-gray-100 dark:border-gray-700 hover:bg-primary hover:text-white dark:hover:bg-primary transition-all duration-200 cursor-default"
+            >
+              {{ skill }}
+            </span>
           </div>
         </div>
       </div>
