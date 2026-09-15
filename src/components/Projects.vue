@@ -1,11 +1,11 @@
 <script setup lang="ts">
 const destaque = {
-  titulo: 'Dev Room',
-  descricao: 'Uma plataforma completa projetada para maximizar a produtividade de desenvolvedores. O Dev Room oferece um ambiente de trabalho otimizado com ferramentas de gerenciamento de tarefas, cronômetro Pomodoro integrado e uma interface minimalista que elimina distrações, permitindo foco total no código.',
+  titulo: 'CentralOS',
+  descricao: 'Uma plataforma completa projetada para maximizar a produtividade de desenvolvedores. O CentralOS oferece um ambiente de trabalho otimizado com ferramentas de gerenciamento de tarefas, cronômetro Pomodoro integrado e uma interface minimalista que elimina distrações, permitindo foco total no código.',
   tecnologias: ['Vite', 'JavaScript', 'NodeJS', 'VueJS', 'TailwindCSS' , 'API', 'Supabase'],
-  imagem: new URL('../assets/devroom.png', import.meta.url).href,
-  github: 'https://github.com/Lucas19Alves/dev-room',
-  demo: 'https://dev-room-three.vercel.app/'
+  imagem: new URL('../assets/centralos.png', import.meta.url).href,
+  github: 'https://github.com/Lucas19Alves/CentralOS',
+  demo: 'https://centralos-main.vercel.app/'
 };
 
 const projetos = [
