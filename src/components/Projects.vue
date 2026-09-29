@@ -1,11 +1,11 @@
 <script setup lang="ts">
 const destaque = {
-  titulo: 'CentralOS',
-  descricao: 'Uma plataforma completa projetada para maximizar a produtividade de desenvolvedores. O CentralOS oferece um ambiente de trabalho otimizado com ferramentas de gerenciamento de tarefas, cronômetro Pomodoro integrado e uma interface minimalista que elimina distrações, permitindo foco total no código.',
-  tecnologias: ['Vite', 'JavaScript', 'NodeJS', 'VueJS', 'TailwindCSS' , 'API', 'Supabase'],
-  imagem: new URL('../assets/centralos.png', import.meta.url).href,
-  github: 'https://github.com/Lucas19Alves/CentralOS',
-  demo: 'https://centralos-main.vercel.app/'
+  titulo: 'Dev Room',
+  descricao: 'Um espaço de trabalho para desenvolvedores que reúne tarefas, Kanban, notas, snippets de código e Pomodoro em um desktop com janelas organizáveis. Com interface responsiva e temas personalizáveis, salva o trabalho no navegador e oferece login com GitHub para sincronizar os dados em um repositório privado.',
+  tecnologias: ['Vue 3', 'Vite', 'JavaScript', 'Tailwind CSS', 'GitHub OAuth', 'Vercel Functions'],
+  imagem: new URL('../assets/dev-room.jpg', import.meta.url).href,
+  github: 'https://github.com/Lucas19Alves/dev-room',
+  demo: 'https://dev-room-three.vercel.app/'
 };
 
 const projetos = [
@@ -64,9 +64,8 @@ const projetos = [
           </div>
           
           <div class="grid lg:grid-cols-2 items-center">
-            <div class="relative overflow-hidden group h-64 lg:h-full">
-              <img :src="destaque.imagem" :alt="destaque.titulo" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-              <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+            <div class="relative overflow-hidden group h-64 lg:h-full bg-slate-100 dark:bg-gray-800 p-4 lg:p-6">
+              <img :src="destaque.imagem" :alt="`Área de trabalho do ${destaque.titulo}, com atalhos para tarefas, Pomodoro, notas e snippets`" loading="lazy" width="1280" height="720" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105">
             </div>
             
             <div class="p-8 lg:p-12">
@@ -86,11 +85,11 @@ const projetos = [
               </div>
               
               <div class="flex flex-col sm:flex-row gap-4">
-                <a :href="destaque.demo" target="_blank" 
+                <a :href="destaque.demo" target="_blank" rel="noopener noreferrer"
                    class="flex-1 text-center bg-primary hover:bg-secondary text-white px-6 py-4 rounded-xl font-bold transition-all shadow-lg shadow-blue-500/30 transform hover:-translate-y-1">
                   <i class="fas fa-external-link-alt mr-2"></i> Ver Demo Online
                 </a>
-                <a :href="destaque.github" target="_blank" 
+                <a :href="destaque.github" target="_blank" rel="noopener noreferrer"
                    class="flex-1 text-center bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-6 py-4 rounded-xl font-bold transition-all transform hover:-translate-y-1">
                   <i class="fab fa-github mr-2"></i> Repositório GitHub
                 </a>
