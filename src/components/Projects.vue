@@ -1,45 +1,92 @@
 <script setup lang="ts">
-const destaque = {
-  titulo: 'Dev Room',
-  descricao: 'Um espaço de trabalho para desenvolvedores que reúne tarefas, Kanban, notas, snippets de código e Pomodoro em um desktop com janelas organizáveis. Com interface responsiva e temas personalizáveis, salva o trabalho no navegador e oferece login com GitHub para sincronizar os dados em um repositório privado.',
-  tecnologias: ['Vue 3', 'Vite', 'JavaScript', 'Tailwind CSS', 'GitHub OAuth', 'Vercel Functions'],
-  imagem: new URL('../assets/dev-room.jpg', import.meta.url).href,
-  github: 'https://github.com/Lucas19Alves/dev-room',
-  demo: 'https://dev-room-three.vercel.app/'
+type Projeto = {
+  titulo: string;
+  descricao: string;
+  tecnologias: string[];
+  imagem: string;
+  alt: string;
+  github?: string;
+  demo: string;
+  demoLabel?: string;
+  openSource?: boolean;
+  destaques?: string[];
+  contain?: boolean;
 };
 
-const projetos = [
+const img = (nome: string) => new URL(`../assets/${nome}`, import.meta.url).href;
+
+const destaques: Projeto[] = [
   {
-    titulo: 'Cardápio dígital',
-    descricao: 'Cardápio interativo para lanchonetes com sistema de pedidos via WhatsApp e controle de horário.',
-    tecnologias: ['JavaScript', 'TailwindCSS', 'API'],
-    imagem: new URL('../assets/cardapio.png', import.meta.url).href,
-    github: 'https://github.com/Lucas19Alves/cardapio',
-    demo: 'https://cardapio-flax-five.vercel.app/'
+    titulo: 'Dev Room',
+    descricao: 'Um desktop de produtividade para desenvolvedores no navegador: tarefas, Kanban, notas, Pomodoro e mais de 15 utilitários de dev em janelas organizáveis, com atalho Ctrl+K para abrir qualquer ferramenta.',
+    destaques: [
+      'Login com GitHub (OAuth com PKCE) e backup sincronizado em repositório privado',
+      'Mescla entre dispositivos ferramenta a ferramenta, sem perder alterações',
+      'Assistente de IA com a chave do próprio usuário (OpenAI, Claude, Gemini e outros)',
+    ],
+    tecnologias: ['Vue 3', 'Vite', 'JavaScript', 'GitHub OAuth', 'Vercel Functions', 'Docker'],
+    imagem: img('dev-room.jpg'),
+    alt: 'Área de trabalho do Dev Room com atalhos para tarefas, Pomodoro, notas e snippets',
+    github: 'https://github.com/Lucas19Alves/dev-room',
+    demo: 'https://dev-room-three.vercel.app/',
+    demoLabel: 'Abrir o Dev Room',
+    openSource: true,
+    contain: true,
+  },
+  {
+    titulo: 'Sítio Mutirão',
+    descricao: 'Jogo cooperativo de fazenda em 3D para 2 a 4 pessoas, direto no navegador. Todos cuidam da mesma propriedade: coletam, plantam, produzem em cadeia e erguem prédios juntos.',
+    destaques: [
+      'Mundo 3D com Three.js: 25 prédios e personagens com esqueleto gerados por código',
+      'Multiplayer em tempo real e chat de voz com Supabase Realtime',
+      'Trilha sonora generativa em Web Audio e instalação como app (PWA)',
+    ],
+    tecnologias: ['Three.js', 'React 19', 'TypeScript', 'Supabase', 'WebAudio', 'Playwright'],
+    imagem: img('sitio-mutirao.webp'),
+    alt: 'Prédios 3D do Sítio Mutirão: celeiro, casas, barracas de feira e estufa',
+    github: 'https://github.com/Lucas19Alves/sitio-mutirao',
+    demo: 'https://sitio-mutirao.vercel.app/',
+    demoLabel: 'Jogar agora',
+    openSource: true,
+  },
+];
+
+const projetos: Projeto[] = [
+  {
+    titulo: 'Véspera Convites',
+    descricao: 'Estúdio de convites digitais animados para casamentos, aniversários e chás. Site, simulador de preço e convites interativos com confirmação de presença.',
+    tecnologias: ['HTML', 'CSS', 'JavaScript', 'GSAP', 'Vercel'],
+    imagem: img('vespera.webp'),
+    alt: 'Página inicial da Véspera com um envelope lacrado',
+    demo: 'https://vesperaconvites.vercel.app/',
+    demoLabel: 'Visitar site',
+  },
+  {
+    titulo: 'Dashboard TI',
+    descricao: 'Painel para auditorias de estoque e controle de validades no varejo. Transforma planilhas do ERP em indicadores, agenda semanal e listas de conferência, tudo offline.',
+    tecnologias: ['Vue 3', 'Tailwind CSS', 'Dexie.js', 'PWA'],
+    imagem: img('dashboard-ti.webp'),
+    alt: 'Tela inicial do Dashboard TI com agenda de auditorias e indicadores',
+    github: 'https://github.com/Lucas19Alves/dashboard-ti',
+    demo: 'https://dashboard-ti.vercel.app/',
+  },
+  {
+    titulo: 'Gerador de QR Code',
+    descricao: 'QR Codes de links, WhatsApp, Wi-Fi e e-mail com prévia instantânea, cores personalizadas e download em PNG ou SVG.',
+    tecnologias: ['Vue 3', 'Vite', 'qrcode'],
+    imagem: img('qrcode.webp'),
+    alt: 'Gerador de QR Code com formulário e prévia do código',
+    github: 'https://github.com/Lucas19Alves/gerador-qr-code',
+    demo: 'https://gerador-qr-code-plum.vercel.app/',
   },
   {
     titulo: 'Gerador de Currículo',
-    descricao: 'Ferramenta prática para criação de currículos profissionais com exportação direta para PDF.',
-    tecnologias: ['VueJS', 'TailwindCSS'],
-    imagem: new URL('../assets/curriculo.png', import.meta.url).href,
+    descricao: 'Currículo em 5 etapas com 5 modelos e prévia em tempo real. Exporta PDF com texto selecionável, legível por sistemas de recrutamento.',
+    tecnologias: ['Vue 3', 'Tailwind CSS', 'Vuedraggable'],
+    imagem: img('curriculo.webp'),
+    alt: 'Gerador de Currículo com formulário e prévia de um currículo preenchido',
     github: 'https://github.com/Lucas19Alves/gerador-curriculo',
-    demo: 'https://gerador-curriculo-rho.vercel.app/'
-  },
-  {
-    titulo: 'Gerador de QRCode',
-    descricao: 'Aplicação para geração dinâmica de QRCodes personalizáveis com suporte a download.',
-    tecnologias: ['VueJS', 'NodeJS', 'Express', 'API'],
-    imagem: new URL('../assets/qrcode.png', import.meta.url).href,
-    github: 'https://github.com/Lucas19Alves/gerador-qr-code',
-    demo: 'https://gerador-qr-code-plum.vercel.app/'
-  },
-  {
-    titulo: 'Landing Page Tech',
-    descricao: 'Landing page moderna e responsiva para empresas de tecnologia, com foco em conversão.',
-    tecnologias: ['React', 'TailwindCSS' , 'Framer Motion'],
-    imagem: new URL('../assets/landing.png', import.meta.url).href,
-    github: 'https://github.com/Lucas19Alves/sunshine-sol',
-    demo: 'https://sunshine-sol-build.vercel.app/'
+    demo: 'https://gerador-curriculo-rho.vercel.app/',
   },
 ];
 </script>
@@ -47,118 +94,101 @@ const projetos = [
 <template>
   <section id="projetos" class="section-padding bg-white dark:bg-gray-900 transition-colors duration-300">
     <div class="container mx-auto px-4">
-      <div class="text-center mb-16" data-aos="fade-up">
-        <h2 class="text-4xl font-bold text-gray-800 dark:text-white mb-4">Meus Projetos</h2>
-        <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-          Uma seleção dos meus trabalhos mais recentes, demonstrando minha evolução técnica e criatividade.
+      <div class="max-w-2xl mb-14" data-aos="fade-up">
+        <h2 class="text-4xl font-bold text-gray-800 dark:text-white mb-4">Projetos</h2>
+        <p class="text-gray-600 dark:text-gray-400">
+          Produtos que estão no ar e que eu mantenho. Os dois primeiros são open source: o código está aberto para estudar, usar e contribuir.
         </p>
       </div>
-      
-      <!-- Projeto em Destaque: Dev Room -->
-      <div class="mb-20" data-aos="fade-up">
-        <div class="relative bg-gray-50 dark:bg-gray-800 rounded-3xl overflow-hidden border border-gray-100 dark:border-gray-700 shadow-2xl">
-          <div class="absolute top-4 left-4 z-20">
-            <span class="px-4 py-1.5 bg-primary text-white text-xs font-bold uppercase tracking-widest rounded-full shadow-lg">
-              PROJETO EM DESTAQUE
-            </span>
-          </div>
-          
-          <div class="grid lg:grid-cols-2 items-center">
-            <div class="relative overflow-hidden group h-64 lg:h-full bg-slate-100 dark:bg-gray-800 p-4 lg:p-6">
-              <img :src="destaque.imagem" :alt="`Área de trabalho do ${destaque.titulo}, com atalhos para tarefas, Pomodoro, notas e snippets`" loading="lazy" width="1280" height="720" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105">
-            </div>
-            
-            <div class="p-8 lg:p-12">
-              <h3 class="text-3xl lg:text-4xl font-bold mb-6 text-gray-800 dark:text-white group-hover:text-primary transition-colors">
-                {{ destaque.titulo }}
-              </h3>
-              <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-                {{ destaque.descricao }}
-              </p>
-              
-              <div class="flex flex-wrap gap-2 mb-8">
-                <span v-for="tech in destaque.tecnologias" 
-                      :key="tech"
-                      class="px-4 py-1.5 bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 rounded-xl text-sm font-semibold">
-                  {{ tech }}
-                </span>
-              </div>
-              
-              <div class="flex flex-col sm:flex-row gap-4">
-                <a :href="destaque.demo" target="_blank" rel="noopener noreferrer"
-                   class="flex-1 text-center bg-primary hover:bg-secondary text-white px-6 py-4 rounded-xl font-bold transition-all shadow-lg shadow-blue-500/30 transform hover:-translate-y-1">
-                  <i class="fas fa-external-link-alt mr-2"></i> Ver Demo Online
-                </a>
-                <a :href="destaque.github" target="_blank" rel="noopener noreferrer"
-                   class="flex-1 text-center bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-6 py-4 rounded-xl font-bold transition-all transform hover:-translate-y-1">
-                  <i class="fab fa-github mr-2"></i> Repositório GitHub
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Outros Projetos -->
-      <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-10 text-center lg:text-left" data-aos="fade-up">Outras Criações</h3>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div 
-          v-for="(projeto, index) in projetos" 
-          :key="projeto.titulo"
-          class="group bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-transparent dark:border-gray-700"
+      <!-- Destaques -->
+      <div class="space-y-10 lg:space-y-16 mb-24">
+        <article
+          v-for="(p, i) in destaques"
+          :key="p.titulo"
+          class="grid lg:grid-cols-[1.15fr_1fr] gap-0 rounded-3xl overflow-hidden bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700"
           data-aos="fade-up"
-          :data-aos-delay="index * 100"
         >
-          <div class="relative overflow-hidden h-40">
-            <img :src="projeto.imagem" :alt="projeto.titulo" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-              <div class="flex space-x-2 w-full">
-                <a :href="projeto.github" target="_blank" class="flex-1 bg-white/20 backdrop-blur-md hover:bg-white/40 text-white py-1.5 rounded-lg text-center text-xs font-medium transition-colors">
-                  GitHub
-                </a>
-                <a :href="projeto.demo" target="_blank" class="flex-1 bg-primary hover:bg-secondary text-white py-1.5 rounded-lg text-center text-xs font-medium transition-colors">
-                  Demo
-                </a>
-              </div>
-            </div>
-          </div>
+          <a
+            :href="p.demo"
+            target="_blank"
+            rel="noopener noreferrer"
+            :class="['relative block min-h-[240px] sm:min-h-[340px] bg-slate-100 dark:bg-gray-950 overflow-hidden', i % 2 ? 'lg:order-2' : '']"
+            :aria-label="`${p.demoLabel ?? 'Abrir'}: ${p.titulo}`"
+          >
+            <img :src="p.imagem" :alt="p.alt" loading="lazy" width="1280" height="800" :class="['absolute inset-0 w-full h-full', p.contain ? 'object-contain p-4 lg:p-6' : 'object-cover']">
+          </a>
 
-          <div class="p-5">
-            <h4 class="text-lg font-bold mb-2 text-gray-800 dark:text-gray-100 group-hover:text-primary transition-colors line-clamp-1">
-              {{ projeto.titulo }}
-            </h4>
-            <p class="text-gray-600 dark:text-gray-400 mb-4 text-xs line-clamp-2">
-              {{ projeto.descricao }}
-            </p>
-            <div class="flex flex-wrap gap-1.5">
-              <span v-for="tech in projeto.tecnologias" 
-                    :key="tech"
-                    class="px-2 py-0.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-md text-[10px] font-bold">
+          <div class="p-8 lg:p-12 flex flex-col">
+            <div class="flex flex-wrap items-center gap-2 mb-5">
+              <span v-if="p.openSource" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300">
+                <i class="fa-solid fa-code-branch" aria-hidden="true"></i> Open source
+              </span>
+              <span class="text-sm text-gray-500 dark:text-gray-400">Em destaque</span>
+            </div>
+
+            <h3 class="text-3xl lg:text-4xl font-bold mb-4 text-gray-900 dark:text-white tracking-tight">{{ p.titulo }}</h3>
+            <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{{ p.descricao }}</p>
+
+            <ul class="space-y-2 mb-8 text-gray-700 dark:text-gray-300">
+              <li v-for="d in p.destaques" :key="d" class="flex gap-3">
+                <i class="fa-solid fa-check text-primary mt-1.5 text-sm" aria-hidden="true"></i>
+                <span>{{ d }}</span>
+              </li>
+            </ul>
+
+            <div class="flex flex-wrap gap-2 mb-8">
+              <span v-for="tech in p.tecnologias" :key="tech" class="px-3 py-1 bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-200 rounded-lg text-sm font-medium">
                 {{ tech }}
               </span>
             </div>
+
+            <div class="mt-auto flex flex-col sm:flex-row gap-3">
+              <a :href="p.demo" target="_blank" rel="noopener noreferrer"
+                 class="flex-1 text-center bg-primary hover:bg-secondary text-white px-6 py-3.5 rounded-xl font-bold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                <i class="fas fa-arrow-up-right-from-square mr-2" aria-hidden="true"></i>{{ p.demoLabel }}
+              </a>
+              <a v-if="p.github" :href="p.github" target="_blank" rel="noopener noreferrer"
+                 class="flex-1 text-center bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:opacity-90 px-6 py-3.5 rounded-xl font-bold transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                <i class="fab fa-github mr-2" aria-hidden="true"></i>Ver o código
+              </a>
+            </div>
           </div>
-        </div>
+        </article>
+      </div>
+
+      <!-- Demais projetos -->
+      <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-8" data-aos="fade-up">Outros projetos</h3>
+
+      <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
+        <article
+          v-for="p in projetos"
+          :key="p.titulo"
+          class="group flex flex-col bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700"
+        >
+          <a :href="p.demo" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true" class="block aspect-[16/10] overflow-hidden bg-slate-100 dark:bg-gray-950">
+            <img :src="p.imagem" :alt="p.alt" loading="lazy" width="1280" height="800" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+          </a>
+
+          <div class="p-5 flex flex-col flex-1">
+            <h4 class="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">{{ p.titulo }}</h4>
+            <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm leading-relaxed">{{ p.descricao }}</p>
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span v-for="tech in p.tecnologias" :key="tech" class="px-2 py-0.5 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-md text-xs font-medium">
+                {{ tech }}
+              </span>
+            </div>
+            <div class="mt-auto flex gap-4 text-sm font-semibold">
+              <a :href="p.demo" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline underline-offset-4">
+                {{ p.demoLabel ?? 'Ver online' }}
+              </a>
+              <a v-if="p.github" :href="p.github" target="_blank" rel="noopener noreferrer" class="text-gray-700 dark:text-gray-300 hover:underline underline-offset-4">
+                Código
+              </a>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 </template>
-
-<style>
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
-
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.line-clamp-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-</style>
