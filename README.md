@@ -10,7 +10,8 @@ Bem-vindo ao repositório do meu portfólio pessoal! Esta é uma aplicação web
 - **Modo Escuro (Dark Mode):** Alternância inteligente de temas com persistência no navegador.
 - **Animações Fluidas:** Utilização de AOS (Animate On Scroll) para uma experiência de navegação elegante.
 - **Formulário de Contato Direto:** Integração com EmailJS para envio de e-mails sem necessidade de backend próprio.
-- **Destaque de Projetos:** Seção dedicada com foco principal no **Dev Room**, meu projeto de maior impacto.
+- **Destaque de Projetos:** **Dev Room** e **Sítio Mutirão** em destaque (open source), seguidos de Véspera Convites, Dashboard TI, Gerador de QR Code e Gerador de Currículo.
+- **Online:** https://portfolio-lucasalves.vercel.app
 - **SEO Otimizado:** Configuração completa de metadados para melhor visibilidade em motores de busca e redes sociais.
 
 ---

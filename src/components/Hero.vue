@@ -65,14 +65,18 @@ onMounted(() => {
               class="w-full sm:w-auto px-8 py-4 bg-primary hover:bg-secondary text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-blue-600/40 transition-all duration-300 transform hover:-translate-y-1">
               Vamos conversar!
             </a>
+            <a href="#projetos"
+              class="w-full sm:w-auto px-8 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-100 hover:border-primary hover:text-primary font-bold rounded-xl transition-colors">
+              Ver projetos
+            </a>
             <div class="flex items-center gap-6 mt-4 sm:mt-0 px-4">
-              <a href="https://wa.me/5511981927567" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-green-500 transition-colors">
+              <a href="https://wa.me/5511981927567" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="text-gray-600 dark:text-gray-400 hover:text-green-500 transition-colors">
                 <i class="fa-brands fa-whatsapp fa-2xl"></i>
               </a>
-              <a href="https://github.com/Lucas19Alves" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">
+              <a href="https://github.com/Lucas19Alves" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">
                 <i class="fa-brands fa-github fa-2xl"></i>
               </a>
-              <a href="https://www.linkedin.com/in/lucaas19alves/" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors">
+              <a href="https://www.linkedin.com/in/lucaas19alves/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors">
                 <i class="fa-brands fa-linkedin fa-2xl"></i>
               </a>
             </div>
@@ -87,7 +91,7 @@ onMounted(() => {
             
             <img 
               src="../assets/perfil.jpg" 
-              alt="Lucas" 
+              alt="Foto de Lucas Alves" width="320" height="320" 
               class="relative z-10 w-full h-full object-cover rounded-full border-4 border-white dark:border-gray-800 shadow-2xl shadow-primary/20"
             >
           </div>
@@ -97,14 +101,11 @@ onMounted(() => {
     
     <!-- Botão de scroll para baixo -->
     <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce hidden lg:block">
-      <a href="#about" class="text-gray-400 hover:text-primary transition-colors">
+      <a href="#about" aria-label="Ir para Sobre" class="text-gray-400 hover:text-primary transition-colors">
         <i class="fa-solid fa-chevron-down fa-2x"></i>
       </a>
     </div>
   </section>
 </template>
 
-<style>
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
-</style>
 
