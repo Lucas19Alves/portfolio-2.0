@@ -10,7 +10,6 @@ type Projeto = {
   demoLabel?: string;
   openSource?: boolean;
   destaques?: string[];
-  contain?: boolean;
 };
 
 const img = (nome: string) => new URL(`../assets/${nome}`, import.meta.url).href;
@@ -25,13 +24,12 @@ const destaques: Projeto[] = [
       'Assistente de IA com a chave do próprio usuário (OpenAI, Claude, Gemini e outros)',
     ],
     tecnologias: ['Vue 3', 'Vite', 'JavaScript', 'GitHub OAuth', 'Vercel Functions', 'Docker'],
-    imagem: img('dev-room.jpg'),
-    alt: 'Área de trabalho do Dev Room com atalhos para tarefas, Pomodoro, notas e snippets',
+    imagem: img('dev-room.webp'),
+    alt: 'Tela do Dev Room no tema escuro com as teclas Ctrl e K em destaque',
     github: 'https://github.com/Lucas19Alves/dev-room',
     demo: 'https://dev-room-three.vercel.app/',
     demoLabel: 'Abrir o Dev Room',
     openSource: true,
-    contain: true,
   },
   {
     titulo: 'Sítio Mutirão',
@@ -43,7 +41,7 @@ const destaques: Projeto[] = [
     ],
     tecnologias: ['Three.js', 'React 19', 'TypeScript', 'Supabase', 'WebAudio', 'Playwright'],
     imagem: img('sitio-mutirao.webp'),
-    alt: 'Prédios 3D do Sítio Mutirão: celeiro, casas, barracas de feira e estufa',
+    alt: 'Celeiro, casas e barracas 3D do Sítio Mutirão com personagens em destaque',
     github: 'https://github.com/Lucas19Alves/sitio-mutirao',
     demo: 'https://sitio-mutirao.vercel.app/',
     demoLabel: 'Jogar agora',
@@ -57,7 +55,7 @@ const projetos: Projeto[] = [
     descricao: 'Estúdio de convites digitais animados para casamentos, aniversários e chás. Site, simulador de preço e convites interativos com confirmação de presença.',
     tecnologias: ['HTML', 'CSS', 'JavaScript', 'GSAP', 'Vercel'],
     imagem: img('vespera.webp'),
-    alt: 'Página inicial da Véspera com um envelope lacrado',
+    alt: 'Envelope lacrado de um convite da Véspera ao lado do site no celular',
     demo: 'https://vesperaconvites.vercel.app/',
     demoLabel: 'Visitar site',
   },
@@ -66,7 +64,7 @@ const projetos: Projeto[] = [
     descricao: 'Painel para auditorias de estoque e controle de validades no varejo. Transforma planilhas do ERP em indicadores, agenda semanal e listas de conferência, tudo offline.',
     tecnologias: ['Vue 3', 'Tailwind CSS', 'Dexie.js', 'PWA'],
     imagem: img('dashboard-ti.webp'),
-    alt: 'Tela inicial do Dashboard TI com agenda de auditorias e indicadores',
+    alt: 'Painel do Dashboard TI com indicadores de auditoria e validades',
     github: 'https://github.com/Lucas19Alves/dashboard-ti',
     demo: 'https://dashboard-ti.vercel.app/',
   },
@@ -75,7 +73,7 @@ const projetos: Projeto[] = [
     descricao: 'QR Codes de links, WhatsApp, Wi-Fi e e-mail com prévia instantânea, cores personalizadas e download em PNG ou SVG.',
     tecnologias: ['Vue 3', 'Vite', 'qrcode'],
     imagem: img('qrcode.webp'),
-    alt: 'Gerador de QR Code com formulário e prévia do código',
+    alt: 'QR Code cercado pelos tipos Link, WhatsApp, Wi-Fi e E-mail',
     github: 'https://github.com/Lucas19Alves/gerador-qr-code',
     demo: 'https://gerador-qr-code-plum.vercel.app/',
   },
@@ -84,7 +82,7 @@ const projetos: Projeto[] = [
     descricao: 'Currículo em 5 etapas com 5 modelos e prévia em tempo real. Exporta PDF com texto selecionável, legível por sistemas de recrutamento.',
     tecnologias: ['Vue 3', 'Tailwind CSS', 'Vuedraggable'],
     imagem: img('curriculo.webp'),
-    alt: 'Gerador de Currículo com formulário e prévia de um currículo preenchido',
+    alt: 'Três modelos de currículo gerados pela ferramenta',
     github: 'https://github.com/Lucas19Alves/gerador-curriculo',
     demo: 'https://gerador-curriculo-rho.vercel.app/',
   },
@@ -116,7 +114,7 @@ const projetos: Projeto[] = [
             :class="['relative block min-h-[240px] sm:min-h-[340px] bg-slate-100 dark:bg-gray-950 overflow-hidden', i % 2 ? 'lg:order-2' : '']"
             :aria-label="`${p.demoLabel ?? 'Abrir'}: ${p.titulo}`"
           >
-            <img :src="p.imagem" :alt="p.alt" loading="lazy" width="1280" height="800" :class="['absolute inset-0 w-full h-full', p.contain ? 'object-contain p-4 lg:p-6' : 'object-cover']">
+            <img :src="p.imagem" :alt="p.alt" loading="lazy" width="1280" height="800" class="absolute inset-0 w-full h-full object-cover">
           </a>
 
           <div class="p-8 lg:p-12 flex flex-col">
@@ -167,7 +165,7 @@ const projetos: Projeto[] = [
           class="group flex flex-col bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700"
         >
           <a :href="p.demo" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true" class="block aspect-[16/10] overflow-hidden bg-slate-100 dark:bg-gray-950">
-            <img :src="p.imagem" :alt="p.alt" loading="lazy" width="1280" height="800" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+            <img :src="p.imagem" :alt="p.alt" loading="lazy" width="1280" height="800" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
           </a>
 
           <div class="p-5 flex flex-col flex-1">
