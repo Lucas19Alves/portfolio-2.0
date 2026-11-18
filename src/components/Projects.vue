@@ -51,6 +51,15 @@ const destaques: Projeto[] = [
 
 const projetos: Projeto[] = [
   {
+    titulo: 'FORGE',
+    descricao: 'App de musculação que monta o treino a partir de um questionário, registra séries com descanso cronometrado e sugere quando subir a carga. Funciona 100% offline, sem conta.',
+    tecnologias: ['React', 'TypeScript', 'Dexie.js', 'PWA', 'Playwright'],
+    imagem: img('forge.webp'),
+    alt: 'Treino em andamento no FORGE com cronômetro de descanso ao lado do card de resumo compartilhável',
+    demo: 'https://forge-pwa-roan.vercel.app/',
+    demoLabel: 'Abrir o app',
+  },
+  {
     titulo: 'Véspera Convites',
     descricao: 'Estúdio de convites digitais animados para casamentos, aniversários e chás. Site, simulador de preço e convites interativos com confirmação de presença.',
     tecnologias: ['HTML', 'CSS', 'JavaScript', 'GSAP', 'Vercel'],
@@ -158,7 +167,7 @@ const projetos: Projeto[] = [
       <!-- Demais projetos -->
       <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-8" data-aos="fade-up">Outros projetos</h3>
 
-      <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <article
           v-for="p in projetos"
           :key="p.titulo"
